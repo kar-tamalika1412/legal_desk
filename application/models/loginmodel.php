@@ -63,6 +63,7 @@ class loginmodel extends CI_Model{
 
 	public function do_login($data){
 		$query = $this->db->where(array('user_email'=>$data['user_email'],'user_password'=>$data['user_password'],'is_email_verified'=>1))->get('user');
+		
 		if($query->num_rows() >0){
 			$val = $query->result_array();
 			$this->session->set_userdata("user_id",$val[0]['user_id']);
